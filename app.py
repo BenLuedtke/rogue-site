@@ -57,6 +57,12 @@ def get_post(slug):
             }
     return None
 
+@app.context_processor
+def inject_css_version():
+    css_file = os.path.join(app.static_folder, "css", "page.css")
+    version = int(os.path.getmtime(css_file))
+    return {"css_version": version}
+
 @app.route("/")
 def index():
     return render_template("index.html", links=json.dumps(LINKS))
