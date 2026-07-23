@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #aaa;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#hud-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 10px;
+    background: #000;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+#welcome-msg {
+    color: #ff0;
+    font-size: 14px;
+    max-width: 60%;
+}
+
+#stats {
+    color: #0f0;
+    font-size: 13px;
+    text-align: right;
+}
+
+#canvas-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#game-canvas {
+    display: block;
+}
+
+#hud-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 10px;
+    background: #000;
+    border-top: 1px solid #333;
+    flex-shrink: 0;
+}
+
+#log {
+    color: #ccc;
+    font-size: 13px;
+    flex: 1;
+}
+
+#cheat-btn {
+    background: #111;
+    border: 1px solid #555;
+    color: #f80;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    padding: 3px 10px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+#cheat-btn:hover {
+    background: #222;
+    color: #ff0;
+}
+
+#link-tooltip {
+    position: absolute;
+    background: #111;
+    border: 1px solid #ff0;
+    color: #ff0;
+    padding: 4px 10px;
+    font-size: 13px;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+}
+
+#link-tooltip a {
+    color: #0ff;
+    text-decoration: none;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    display: none;
+}
+
+#overlay-box {
+    background: #111;
+    border: 2px solid #ff0;
+    padding: 30px 40px;
+    max-width: 400px;
+    text-align: center;
+}
+
+#overlay-box h2 {
+    color: #ff0;
+    margin-bottom: 12px;
+}
+
+#overlay-box p {
+    color: #ccc;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+#overlay-box .close-btn {
+    margin-top: 16px;
+    background: #000;
+    border: 1px solid #555;
+    color: #aaa;
+    font-family: 'Courier New', monospace;
+    padding: 4px 14px;
+    cursor: pointer;
+}

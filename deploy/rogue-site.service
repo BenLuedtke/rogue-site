@@ -1,0 +1,19 @@
+[Unit]
+Description=rogue-site gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/rogue-site
+EnvironmentFile=/var/www/rogue-site/.env
+ExecStart=/var/www/rogue-site/venv/bin/gunicorn \
+    --workers 2 \
+    --bind 127.0.0.1:8000 \
+    --access-logfile /var/log/rogue-site/access.log \
+    --error-logfile /var/log/rogue-site/error.log \
+    app:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

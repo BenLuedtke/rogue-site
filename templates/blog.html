@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Blog — Ben Luedtke{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+<p class="subtitle">These are my actual thoughts.</p>
+
+<div class="section">
+    {% if posts %}
+    <div class="post-list">
+        {% for post in posts %}
+        <a class="post-item" href="/blog/{{ post.slug }}">
+            <span class="post-title">{{ post.title }}</span>
+            <span class="post-date">{{ post.date }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="color:#444; font-size:13px;">No posts yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

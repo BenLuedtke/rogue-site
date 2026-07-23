@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Contact — Ben Luedtke{% endblock %}
+
+{% block content %}
+<h1>Contact</h1>
+<p class="subtitle">Get in touch.</p>
+
+<div class="section">
+    <form id="contact-form" novalidate>
+        <div class="form-field">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-input form-textarea" id="message" name="message" rows="6" required></textarea>
+        </div>
+        <div class="form-footer">
+            <button class="form-submit" type="submit">Send</button>
+            <span id="form-status"></span>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('form-status');
+    const btn = form.querySelector('button[type="submit"]');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+    status.className = '';
+
+    try {
+        const res = await fetch('/contact', {
+            method: 'POST',
+            body: new FormData(form),
+        });
+        const data = await res.json();
+        if (data.ok) {
+            status.textContent = 'Sent.';
+            status.className = 'status-ok';
+            form.reset();
+        } else {
+            status.textContent = data.error || 'Something went wrong.';
+            status.className = 'status-err';
+        }
+    } catch {
+        status.textContent = 'Something went wrong.';
+        status.className = 'status-err';
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send';
+    }
+});
+</script>
+{% endblock %}

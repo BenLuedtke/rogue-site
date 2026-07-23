@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ben Luedtke{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body class="page-body">
+<div class="page-wrap">
+    <header class="page-header">
+        <a href="/" class="back-link">← return to dungeon</a>
+        <nav class="page-nav">
+            <a href="/projects">Projects</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="page-footer">
+        Ben Luedtke &mdash; <span id="year"></span>
+    </footer>
+</div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

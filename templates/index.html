@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Luedtke</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div id="game-container">
+    <div id="hud-top">
+        <div id="welcome-msg">
+            This is a website. The links are somewhere in the dungeon.<br>
+            <span style="color:#888;font-size:12px;">Move: WASD / arrow keys / hjkl &nbsp;|&nbsp; Diagonals: yubn</span>
+        </div>
+        <div id="stats">HP: 30/30 &nbsp; ATK: 5</div>
+    </div>
+
+    <div id="canvas-wrapper">
+        <canvas id="game-canvas"></canvas>
+    </div>
+
+    <div id="hud-bottom">
+        <div id="log">Use WASD, arrow keys, or hjkl to move.</div>
+        <button id="cheat-btn">[ Cheat ]</button>
+    </div>
+</div>
+
+<!-- Link discovery overlay -->
+<div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:200;">
+    <div id="overlay-box">
+        <h2 id="overlay-title"></h2>
+        <p style="margin-top:12px;">
+            <a id="overlay-link" href="#" target="_blank" style="color:#00cccc; font-size:14px;"></a>
+        </p>
+        <button class="close-btn" id="overlay-close">[ return ]</button>
+    </div>
+</div>
+
+<!-- Death overlay -->
+<div id="death-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); align-items:center; justify-content:center; z-index:200;">
+    <div id="overlay-box">
+        <h2 style="color:#c00;">You died.</h2>
+        <p style="margin-top:10px; color:#555;">This happens.</p>
+        <button class="close-btn" id="revive-btn" style="margin-top:20px; color:#ffdd00; border-color:#555;">[ continue ]</button>
+    </div>
+</div>
+
+<script>
+    window.SITE_LINKS = {{ links|safe }};
+</script>
+<script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
