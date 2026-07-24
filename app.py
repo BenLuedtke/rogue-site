@@ -14,6 +14,7 @@ app.secret_key = os.environ.get("SECRET_KEY", "dev-only-insecure-key")
 
 LINKS = [
     {"id": "github",   "label": "GitHub",   "url": "https://github.com/benluedtke", "symbol": "G"},
+    {"id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/benjamin-luedtke/", "symbol": "L"},
     {"id": "projects", "label": "Projects", "url": "/projects", "symbol": "P"},
     {"id": "blog",     "label": "Blog",     "url": "/blog",     "symbol": "B"},
     {"id": "contact",  "label": "Contact",  "url": "/contact",  "symbol": "C"},
