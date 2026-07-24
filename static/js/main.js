@@ -159,21 +159,23 @@ canvas.addEventListener('click', (e) => {
 });
 
 // -- Touch / swipe --
+// Attached to wrapper div rather than canvas for reliable iOS Safari capture.
 
+const canvasWrapper = document.getElementById('canvas-wrapper');
 let touchStartX = 0, touchStartY = 0;
-const MIN_SWIPE = 30;
+const MIN_SWIPE = 25;
 
-canvas.addEventListener('touchstart', (e) => {
+canvasWrapper.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
     e.preventDefault();
 }, { passive: false });
 
-canvas.addEventListener('touchmove', (e) => {
+canvasWrapper.addEventListener('touchmove', (e) => {
     e.preventDefault();
 }, { passive: false });
 
-canvas.addEventListener('touchend', (e) => {
+canvasWrapper.addEventListener('touchend', (e) => {
     if (!game) return;
     const touch = e.changedTouches[0];
     const dx = touch.clientX - touchStartX;

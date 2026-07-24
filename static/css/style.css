@@ -12,6 +12,7 @@ body {
     line-height: 1;
     overflow: hidden;
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
 }
 
@@ -19,6 +20,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
 }
@@ -37,7 +39,15 @@ body {
     color: #ff0;
     font-size: 14px;
     max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
+
+.welcome-mobile { display: none; }
+.hint-mobile    { display: none; }
+.hint-desktop   { color: #888; font-size: 12px; }
+.welcome-desktop { }
 
 #stats {
     color: #0f0;
@@ -106,8 +116,6 @@ body {
     text-decoration: none;
 }
 
-.hint-mobile { display: none; }
-
 .mobile-link-item {
     padding: 14px 0;
     border-bottom: 1px solid #222;
@@ -124,17 +132,32 @@ body {
 
 /* Touch device overrides */
 @media (hover: none) and (pointer: coarse) {
-    .hint-desktop { display: none; }
-    .hint-mobile { display: inline; }
+    .welcome-desktop { display: none; }
+    .hint-desktop    { display: none; }
+    .welcome-mobile  { display: block; }
+    .hint-mobile     { display: block; color: #888; font-size: 12px; }
+
+    body, #game-container {
+        /* Prevent iOS rubber-band scroll from showing content under chrome */
+        overscroll-behavior: none;
+    }
+
+    #hud-top {
+        padding: 8px 10px;
+    }
+
+    #hud-bottom {
+        padding: 8px 10px;
+        /* Push content above iOS home indicator */
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+    }
 
     #cheat-btn {
         padding: 10px 18px;
         font-size: 15px;
         margin-left: 10px;
-    }
-
-    #hud-bottom {
-        padding: 8px 10px;
+        /* Larger tap target */
+        min-height: 44px;
     }
 
     #log {
